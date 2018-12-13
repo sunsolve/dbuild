@@ -42,4 +42,6 @@ RUN cd /root/vsomeip-build && \
     git clone https://github.com/GENIVI/capicxx-someip-tools.git && \
     git clone https://github.com/GENIVI/vsomeip.git
 
-
+COPY build-someip.sh /root/vsomeip-build/
+COPY patch/*.patch /root/vsomeip-build/
+RUN cd /root/vsomeip-build && sh ./build-someip.sh
