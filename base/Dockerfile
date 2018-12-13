@@ -29,6 +29,10 @@ RUN apt-get update && \
 		inetutils-ping \
 		wget \
 		gdb  \
-		netcat-openbsd
+		netcat-openbsd \
+		sudo \
+		tcpdump \
+		tshark \
+
 
 
