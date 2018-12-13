@@ -32,7 +32,7 @@ RUN apt-get update && \
 		netcat-openbsd \
 		sudo \
 		tcpdump \
-		tshark \
+		tshark 
 
 RUN  mkdir -p /root/vsomeip-build
 RUN cd /root/vsomeip-build && \
