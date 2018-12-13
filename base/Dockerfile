@@ -21,5 +21,14 @@ RUN apt-get update && \
 		graphviz \
 		silversearcher-ag \
 		vim \
+		iproute2 \
+	 	traceroute \
+		curl \
+		dnsutils \
+		net-tools \
+		inetutils-ping \
+		wget \
+		gdb  \
+		netcat-openbsd
 
 
