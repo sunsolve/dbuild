@@ -32,6 +32,9 @@ RUN apt-get update && \
 		sudo \
 		tcpdump 
 
+RUN apt-get install -y unzip && \
+    apt-get install -y unrar 
+
 RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
   echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu bionic main" > /etc/apt/sources.list.d/webupd8team-java-trusty.list && \
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 && \
@@ -50,3 +53,16 @@ RUN cd /root/vsomeip-build && \
 COPY build-someip.sh /root/vsomeip-build/
 COPY patch/*.patch /root/vsomeip-build/
 RUN cd /root/vsomeip-build && sh ./build-someip.sh
+
+RUN cd /root/vsomeip-build && \
+    mkdir /usr/local/bin/commonapi-generator && \
+    unzip -d /usr/local/bin/commonapi-generator  ./capicxx-core-tools/org.genivi.commonapi.core.cli.product/target/products/commonapi-generator.zip && \
+    chmod +x /usr/local/bin/commonapi-generator/commonapi-generator-linux-x86_64 && \
+    mkdir -p /usr/local/bin/commonapi-someip-generator && \
+    unzip -d /usr/local/bin/commonapi-someip-generator ./capicxx-someip-tools/org.genivi.commonapi.someip.cli.product/target/products/commonapi_someip_generator.zip && \
+    chmod +x /usr/local/bin/commonapi-someip-generator/commonapi-someip-generator-linux-x86_64
+
+RUN echo "\n  \
+PATH=$PATH:/usr/local/bin/commonapi-generator:/usr/local/bin/commonapi-someip-generator \n \
+export PS1='\[\e[31;7m\][\u@\h \w]\$ \[\e[m\]' \n" \
+>> ~/.bashrc
