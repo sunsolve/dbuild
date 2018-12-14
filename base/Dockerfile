@@ -34,7 +34,6 @@ RUN apt-get update && \
 
 RUN apt-get install -y unzip && \
     apt-get install -y unrar  && \
-    apt-get install -y tshark && \
     apt-get install -y openssh-server 
 
 RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
