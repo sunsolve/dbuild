@@ -63,10 +63,20 @@ RUN cd /root/vsomeip-build && \
     unzip -d /usr/local/bin/commonapi-someip-generator ./capicxx-someip-tools/org.genivi.commonapi.someip.cli.product/target/products/commonapi_someip_generator.zip && \
     chmod +x /usr/local/bin/commonapi-someip-generator/commonapi-someip-generator-linux-x86_64
 
+RUN rm -rf /root/.m2
+
 RUN DEBIAN_FRONTEND=noninteractive apt-get install wireshark -y &&  \
     apt-get install -y tshark
 
+COPY bashmarks.sh /root/.bashmarks.sh
+
+
 RUN echo "\n  \
 PATH=$PATH:/usr/local/bin/commonapi-generator:/usr/local/bin/commonapi-someip-generator \n \
-export PS1='\[\e[31;7m\][\u@\h \w]\$ \[\e[m\]' \n" \
+export PS1='\[\e[31;7m\][\u@\h \w]\$ \[\e[m\]' \n \
+source ~/.bashmarks.sh  \n \
+cd /root/vsomeip-build/vsomeip && s vsomeip \n \
+cd /root/vsomeip-build/vsomeip/examples/hello_world && s hello \n \
+cd /root/vsomeip-build/vsomeip/examples && s example \n  \
+cd ~ " \
 >> ~/.bashrc
