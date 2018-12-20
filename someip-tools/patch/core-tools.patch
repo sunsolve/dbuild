@@ -1,5 +1,5 @@
 diff --git a/org.genivi.commonapi.releng/pom.xml b/org.genivi.commonapi.releng/pom.xml
-index c837e8a..8b12b53 100644
+index c837e8a..0c3b3aa 100644
 --- a/org.genivi.commonapi.releng/pom.xml
 +++ b/org.genivi.commonapi.releng/pom.xml
 @@ -89,6 +89,13 @@
