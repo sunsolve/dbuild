@@ -6,11 +6,11 @@ index c837e8a..aafb794 100644
                  <groupId>org.eclipse.xtend</groupId>
                  <artifactId>xtend-maven-plugin</artifactId>
                  <version>${xtend-version}</version>
-+<dependencies>
++               <dependencies>
 +                                               <dependency>
-+                                                   <groupId>org.eclipse.jdt</groupId>
-+                                                   <artifactId>org.eclipse.jdt.core</artifactId>
-+                                                   <version>3.13.102</version>
++                                                   <groupId>org.eclipse.platform</groupId>
++                                                   <artifactId>org.eclipse.equinox.common</artifactId>
++                                                   <version>3.10.0</version>
 +                                               </dependency>
 +                                       </dependencies>
                  <executions>
