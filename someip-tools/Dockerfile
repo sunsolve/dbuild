@@ -1,4 +1,4 @@
-FROM sunsolve/base:latest
+FROM sunsolve/someip-core:latest
 
 COPY build-someip-tools.sh /root/vsomeip-build/
 COPY patch/*.patch /root/vsomeip-build/
