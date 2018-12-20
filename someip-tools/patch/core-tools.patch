@@ -12,7 +12,7 @@ index c837e8a..0c3b3aa 100644
 +                                                   <artifactId>org.eclipse.equinox.common</artifactId>
 +                                                   <version>3.10.0</version>
 +                                               </dependency>
-+                                       </dependencies
++                                       </dependencies>
                  <executions>
                      <execution>
                          <goals>
