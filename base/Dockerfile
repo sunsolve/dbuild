@@ -55,15 +55,18 @@ COPY build-someip.sh /root/vsomeip-build/
 COPY patch/*.patch /root/vsomeip-build/
 RUN cd /root/vsomeip-build && sh ./build-someip.sh
 
-RUN cd /root/vsomeip-build && \
-    mkdir /usr/local/bin/commonapi-generator && \
-    unzip -d /usr/local/bin/commonapi-generator  ./capicxx-core-tools/org.genivi.commonapi.core.cli.product/target/products/commonapi-generator.zip && \
-    chmod +x /usr/local/bin/commonapi-generator/commonapi-generator-linux-x86_64 && \
-    mkdir -p /usr/local/bin/commonapi-someip-generator && \
-    unzip -d /usr/local/bin/commonapi-someip-generator ./capicxx-someip-tools/org.genivi.commonapi.someip.cli.product/target/products/commonapi_someip_generator.zip && \
-    chmod +x /usr/local/bin/commonapi-someip-generator/commonapi-someip-generator-linux-x86_64
 
-RUN rm -rf /root/.m2
+RUN rm -rf /root/.m2 && \
+    rm -rf /root/vsomeip-build/capicxx-core-tools && \
+    rm -rf /root/vsomeip-build/capicxx-someip-tools 
+
+#RUN cd /root/vsomeip-build && \
+#    mkdir /usr/local/bin/commonapi-generator && \
+#    unzip -d /usr/local/bin/commonapi-generator  ./capicxx-core-tools/org.genivi.commonapi.core.cli.product/target/products/commonapi-generator.zip && \
+#    chmod +x /usr/local/bin/commonapi-generator/commonapi-generator-linux-x86_64 && \
+#    mkdir -p /usr/local/bin/commonapi-someip-generator && \
+#    unzip -d /usr/local/bin/commonapi-someip-generator ./capicxx-someip-tools/org.genivi.commonapi.someip.cli.product/target/products/commonapi_someip_generator.zip && \
+#    chmod +x /usr/local/bin/commonapi-someip-generator/commonapi-someip-generator-linux-x86_64
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install wireshark -y &&  \
     apt-get install -y tshark
