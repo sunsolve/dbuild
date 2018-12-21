@@ -37,11 +37,14 @@ echo -e \n\
 cd ~ " \
 >> /home/$USERNAME/.bashrc
 
+RUN mkdir -p /var/run/sshd
+
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 
 RUN chown -R $USERNAME: /home/$USERNAME
-
 RUN echo "$USERNAME:$PASSWORD" | chpasswd
 
-
-USER $USERNAME
-WORKDIR /home/$USERNAME
+EXPOSE 22
+CMD  ["/usr/sbin/sshd", "-D"]
