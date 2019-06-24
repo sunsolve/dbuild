@@ -72,3 +72,18 @@ RUN locale-gen en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
+
+ARG USERNAME=genivi
+ARG PASSWORD=genivi
+
+RUN groupadd genivi
+RUN useradd -d /home/$USERNAME -ms /bin/bash -g genivi -G sudo $USERNAME
+COPY bashmarks.sh /home/$USERNAME/.bashmarks.sh
+
+RUN echo "\n  \
+export PS1='\[\e[31;7m\][\u@\h \w]\$ \[\e[m\]' \n \
+source ~/.bashmarks.sh  \n " \
+>> /home/$USERNAME/.bashrc
+
+RUN chown -R $USERNAME: /home/$USERNAME
+RUN echo "$USERNAME:$PASSWORD" | chpasswd
