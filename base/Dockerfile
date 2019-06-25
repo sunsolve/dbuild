@@ -31,7 +31,8 @@ RUN dpkg --add-architecture i386 && \
 		gdb  \
 		netcat-openbsd \
 		sudo \
-		tcpdump 
+		tcpdump  \
+		apt-utils 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install wireshark -y &&  \
     apt-get install -y tshark
@@ -53,12 +54,17 @@ RUN apt-get install -y gawk  \
 		       cpio \
 		       locales 
 
-RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
-  echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu bionic main" > /etc/apt/sources.list.d/webupd8team-java-trusty.list && \
-  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 && \
-  apt-get update && \
-  apt-get install -y --no-install-recommends oracle-java8-installer oracle-java8-set-default && \
-  apt-get install -y maven
+#### Due to Oracle new license policy , can't use the following way to install oracle-jdk anymore
+
+#RUN echo "oracle-java11-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
+#  echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu bionic main" > /etc/apt/sources.list.d/webupd8team-java-trusty.list && \
+#  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 && \
+#  apt-get update && \
+#  apt-get install -y --no-install-recommends oracle-java8-installer oracle-java11-set-default && \
+#  apt-get install -y maven
+
+RUN apt-get install -y default-jdk \
+		       maven
 
 COPY bashmarks.sh /root/.bashmarks.sh
 
