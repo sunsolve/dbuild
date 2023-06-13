@@ -1,5 +1,5 @@
 #Download base image ubuntu 18.04 LTS
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 #COPY sources.list /etc/apt/sources.list
 COPY zoneinfo/PRC /usr/share/zoneinfo/PRC
@@ -9,9 +9,9 @@ RUN mkdir /usr/share/zoneinfo/Asia \
   && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
   && echo $TZ > /etc/timezone
 
-RUN dpkg --add-architecture i386 && \
-    apt-get update && \
-    apt-get install -y cmake \ 
+#RUN dpkg --add-architecture i386 && \
+RUN     apt-get update && \
+        apt-get install -y cmake \ 
 		git \
 		subversion \
 		libboost-all-dev \
@@ -46,7 +46,7 @@ RUN apt-get install -y gawk  \
 		       diffstat  \
 		       unzip  \
 		       texinfo  \
-		       gcc-multilib \
+#		       gcc-multilib \
 		       build-essential \
 		       chrpath \
 		       socat \
