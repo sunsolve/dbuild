@@ -1,5 +1,5 @@
 #Download base image ubuntu 18.04 LTS
-FROM ubuntu:22.04
+FROM ubuntu:18.04
 
 #COPY sources.list /etc/apt/sources.list
 COPY zoneinfo/PRC /usr/share/zoneinfo/PRC
@@ -63,7 +63,8 @@ RUN apt-get install -y gawk  \
 #  apt-get install -y --no-install-recommends oracle-java8-installer oracle-java11-set-default && \
 #  apt-get install -y maven
 
-RUN apt-get install -y default-jdk \
+#RUN apt-get install -y default-jdk \
+RUN apt-get install -y openjdk-8-jdk \
 		       maven
 
 COPY bashmarks.sh /root/.bashmarks.sh
