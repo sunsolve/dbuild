@@ -3,6 +3,7 @@ FROM sunsolve/someip-tools:latest
 ARG USERNAME=someip
 ARG PASSWORD=someip
 
+RUN mv /root/vsomeip-build/capicxx-core-tools/CommonAPI-Examples /home/$USERNAME/examples
 RUN rm -rf /root/.m2 && \
     rm -rf /root/vsomeip-build/capicxx-core-tools && \
     rm -rf /root/vsomeip-build/capicxx-someip-tools 
