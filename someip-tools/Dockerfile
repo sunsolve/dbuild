@@ -2,6 +2,7 @@ FROM sunsolve/someip-core:latest
 
 COPY build-someip-tools.sh /root/vsomeip-build/
 COPY patch/*.patch /root/vsomeip-build/
+RUN update-java-alternatives --set /usr/lib/jvm/java-1.8.0-openjdk-amd64
 RUN cd /root/vsomeip-build && sh ./build-someip-tools.sh
 
 
