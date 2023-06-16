@@ -8,7 +8,7 @@ mvn -Dtarget.id=org.genivi.commonapi.core.target clean verify
 cd ../..
 mkdir -p /usr/local/bin/commonapi-generator
 unzip -d /usr/local/bin/commonapi-generator  ./capicxx-core-tools/org.genivi.commonapi.core.cli.product/target/products/commonapi_core_generator.zip
-chmod +x /usr/local/bin/commonapi-generator/commonapi-core-generator-linux-x86
+chmod +x /usr/local/bin/commonapi-generator/commonapi-core-generator-linux-x86_64
 
 
 cd capicxx-someip-tools
