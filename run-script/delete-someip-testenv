@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "You are trying to delete SOME/IP testing container s1 & s2... "
+
+ANS=no
+
+read -p "Are you sure [yes/no] ? << " ANS
+
+if [ $ANS != 'yes' ]
+then
+	echo "Cancel...."
+else
+	docker rm -f s1
+	docker rm -f s2
+	echo "Deleting........done"
+fi
+

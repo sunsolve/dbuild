@@ -1,0 +1,4 @@
+#!/bin/bash
+# Access to SOME/IP Client container from host directly
+
+docker exec -it --user=someip --workdir=/home/someip s2 /bin/bash 

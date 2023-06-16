@@ -1,0 +1,16 @@
+#!/bin/bash
+# Create two container, one for server, another for client
+#
+# Server Container:
+#     Container name = s1
+#     Host name      = vservice-s1
+#     Ssh  port map  = 2022
+
+# Client Container: 
+#     Container name = s2
+#     Host name      = vclient-s2
+#     Ssh  port map  = 3033
+#
+
+docker run -d --platform linux/amd64 --hostname=vservice-s1 --name=s1  -p 2022:22  sunsolve/someip 
+docker run -d --platform linux/amd64 --hostname=vclient-s2 --name=s2  -p 3033:22  sunsolve/someip
